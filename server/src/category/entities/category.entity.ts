@@ -13,7 +13,7 @@ export class Category {
     @ManyToOne(() => User, (user) => user.categories)
     @JoinColumn({ name: 'user_id' })
 
-    user: User[]
+    user: User
 
     @OneToMany(() => Transaction, (transaction) => transaction.category)
     transactions: Transaction[]
