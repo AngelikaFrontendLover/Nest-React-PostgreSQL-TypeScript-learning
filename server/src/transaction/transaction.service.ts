@@ -4,7 +4,6 @@ import { UpdateTransactionDto } from './dto/update-transaction.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Transaction } from './entities/transaction.entity';
 import { Repository } from 'typeorm';
-import { create } from 'domain';
 
 @Injectable()
 export class TransactionService {
@@ -51,6 +50,19 @@ export class TransactionService {
     })
     if (!transaction) throw new NotFoundException("Transaction not founded");
     return transaction;
+  }
+
+  async findAllByType(id: number, type: string) {
+    const transactions = await this.transactionRepository.find({
+      where: {
+        user: { id },
+        type,
+      }
+    })
+
+    const total = transactions.reduce((acc, obj) => acc + obj.amount, 0);
+
+    return total;
   }
 
   async update(id: number, updateTransactionDto: UpdateTransactionDto) {
