@@ -21,18 +21,21 @@ const Auth: FC = () => {
                 setTokenToLocalStorage('token', data.token);
                 dispatch(login(data));
                 toast.success('You logged in');
+                setEmail('');
+                setPassword('')
                 navigate('/')
             }
 
         } catch (err: any) {
             const error = err.response?.data.message;
             toast.error(error.toString());
+            setEmail('');
+            setPassword('')
         }
     }
 
     const registrationHandler = async (e: React.FormEvent<HTMLFormElement>) => {
         try {
-            console.log(e);
             e.preventDefault();
             const data = await AuthService.registration({
                 email,
@@ -41,10 +44,14 @@ const Auth: FC = () => {
             if (data) {
                 toast.success('Account created')
                 setIsLogin(!isLogin)
+                setEmail('');
+                setPassword('')
             }
         } catch (err: any) {
             const error = err.response?.data.message
             toast.error(error.toString());
+            setEmail('');
+            setPassword('')
         }
     }
 
@@ -55,8 +62,8 @@ const Auth: FC = () => {
         <form
             onSubmit={isLogin ? loginHandler : registrationHandler}
             className="flex w-1/3 flex-col mx-auto gap-5">
-            <input type="text" className="input" placeholder="email" onChange={(e) => { setEmail(e.target.value) }} />
-            <input type="password" className="input" placeholder="password" onChange={(e) => { setPassword(e.target.value) }} />
+            <input type="text" className="input" placeholder="email" value={email} onChange={(e) => { setEmail(e.target.value) }} />
+            <input type="password" className="input" placeholder="password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
             <button className="btn btn-green mx-auto">Submit</button>
         </form>
         <div className="flex justify-center mt-5">
