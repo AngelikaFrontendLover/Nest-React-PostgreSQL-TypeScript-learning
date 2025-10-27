@@ -7,3 +7,9 @@ export class CreateUserDto {
     @MinLength(6, { message: 'Password must be more than 6 symbols' })
     password: string;
 }
+
+
+export class CreateUserResponseDto {
+    @IsEmail()
+    email: string;
+}

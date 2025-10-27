@@ -16,8 +16,8 @@ export class CategoryController {
     return this.categoryService.create(createCategoryDto, +req.user.id);
   }
 
-  @Get('/type/:id')
-  @UseGuards(JwtAuthGuard, AuthorGueard)
+  @Get()
+  @UseGuards(JwtAuthGuard)
   findAll(@Req() req) {
     return this.categoryService.findAll(+req.user.id);
   }

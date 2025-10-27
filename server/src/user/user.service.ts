@@ -1,5 +1,5 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
+import { CreateUserDto, CreateUserResponseDto } from './dto/create-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import * as argon2 from "argon2";
@@ -26,7 +26,9 @@ export class UserService {
 
     const token = this.jwtService.sign({ id: user.id, email: createUserDto.email })
 
-    return { user, token }
+    const { password, ...userWithoutPassword } = user;
+
+    return { user: userWithoutPassword, token }
   }
 
   async findOne(email: string) {
