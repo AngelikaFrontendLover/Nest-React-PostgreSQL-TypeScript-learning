@@ -22,19 +22,19 @@ export class CategoryController {
     return this.categoryService.findAll(+req.user.id);
   }
 
-  @Get('/type/:id')
+  @Get('/:type/:id')
   @UseGuards(JwtAuthGuard, AuthorGueard)
   findOne(@Param('id') id: string) {
     return this.categoryService.findOne(+id);
   }
 
-  @Patch('/type/:id')
+  @Patch('/:type/:id')
   @UseGuards(JwtAuthGuard, AuthorGueard)
   update(@Param('id') id: string, @Body() updateCategoryDto: UpdateCategoryDto) {
     return this.categoryService.update(+id, updateCategoryDto);
   }
 
-  @Delete('/type/:id')
+  @Delete('/:type/:id')
   @UseGuards(JwtAuthGuard, AuthorGueard)
   remove(@Param('id') id: string) {
     return this.categoryService.remove(+id);
