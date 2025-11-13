@@ -31,6 +31,7 @@ export class TransactionController {
   @UseGuards(JwtAuthGuard)
   async create(@Body() createTransactionDto: CreateTransactionDto, @Req() req) {
     const category = await this.categoryService.findOne(createTransactionDto.category.id)
+
     if (category && +category.user.id === +req.user.id) {
       return this.transactionService.create(
         createTransactionDto,

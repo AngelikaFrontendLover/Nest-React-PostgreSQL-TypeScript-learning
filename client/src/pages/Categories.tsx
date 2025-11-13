@@ -1,4 +1,4 @@
-import { useEffect, useState, type FC } from "react";
+import { useState, type FC } from "react";
 import { AiFillCloseCircle, AiFillEdit } from "react-icons/ai";
 import { FaPlus } from "react-icons/fa";
 import { Form, useLoaderData } from "react-router-dom";

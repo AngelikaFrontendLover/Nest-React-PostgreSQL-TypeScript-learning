@@ -17,7 +17,7 @@ export class TransactionService {
       title: createTransactionDto.title,
       amount: createTransactionDto.amount,
       type: createTransactionDto.type,
-      category: { id: +createTransactionDto.category },
+      category: { id: +createTransactionDto.category.id },
       user: { id },
     }
     if (!newTransaction) throw new BadRequestException("Something went wrong...")
@@ -30,9 +30,12 @@ export class TransactionService {
       where: {
         user: { id }
       },
+      relations: {
+        category: true,
+      },
       order:
       {
-        createtedAt: 'DESC',
+        createdAt: 'DESC',
       }
     })
     return transaction;
@@ -95,7 +98,7 @@ export class TransactionService {
         user: true
       },
       order: {
-        createtedAt: "DESC"
+        createdAt: "DESC"
       },
       take: limit,
       skip: (page - 1) * limit

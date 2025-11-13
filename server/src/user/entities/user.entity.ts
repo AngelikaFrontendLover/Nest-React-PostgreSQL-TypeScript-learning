@@ -26,7 +26,7 @@ export class User {
     })
 
     @CreateDateColumn()
-    createtedAt: Date
+    createdAt: Date
 
     @UpdateDateColumn()
     updatedAt: Date

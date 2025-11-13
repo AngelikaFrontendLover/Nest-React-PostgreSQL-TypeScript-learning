@@ -19,7 +19,7 @@ export class Category {
     transactions: Transaction[]
 
     @CreateDateColumn()
-    createtedAt: Date
+    createdAt: Date
 
     @UpdateDateColumn()
     updatedAt: Date
