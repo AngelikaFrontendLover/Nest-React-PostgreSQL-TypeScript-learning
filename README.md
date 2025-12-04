@@ -12,13 +12,14 @@ A full-stack application for tracking income and expenses.
    cd <project-folder>
 
 3. **Installation** 
+
 To install dependencies, run the command:
 
 npm i
 
-3. **Create a database**
+4. **Create a database**
 
-Create a new database for this project.
+Set up a new PostgreSQL database locally for this project.
 
 
 ## Running the project
