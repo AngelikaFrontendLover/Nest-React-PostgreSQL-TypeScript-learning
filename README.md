@@ -10,33 +10,32 @@ A full-stack application for tracking income and expenses.
    ```bash
    git clone <repository-url>
    cd <project-folder>
+   ```
 
-3. **Installation** 
+3. **Installation**  
+   To install dependencies, run the command:
+   ```bash
+   npm install
+   ```
 
-To install dependencies, run the command:
-
-npm i
-
-4. **Create a database**
-
-Set up a new PostgreSQL database locally for this project.
-
+4. **Create a local database**  
+   Set up a new PostgreSQL database locally for this project.
 
 ## Running the project
+
 - Start the Server
-
-cd server
-npm run start:dev
-
+   ```bash
+   cd server
+   npm run start:dev
+   ```
 
 - Start the Client
+   ```bash
+   cd client
+   npm run dev
+   ```
 
-cd client
-npm run dev
-
-
-Server and client run separately
-
+Server and client run separately.  
 Make sure to start both for the app to work.
 
 
